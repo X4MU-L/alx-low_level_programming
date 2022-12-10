@@ -1,0 +1,26 @@
+#include <stdlib.h>
+#include <time.h>
+/* more headers goes there */
+#include <stdio.h>
+#include <ctype.h>
+
+/**
+ * main - Entry point
+ *
+ * Description: checks if a ramdom number generated in negetive or positive
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+	char c[];
+
+	for (c = 'a'; c < 'Z'; c++)
+	{
+		if (isalpha(c))
+		{
+			c += putchar("%c",c);
+		}
+	}
+	putchar("%s", c);
+	return (0);
+}
