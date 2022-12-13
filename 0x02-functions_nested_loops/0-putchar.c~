@@ -1,0 +1,24 @@
+#include "main.h"
+
+
+/**
+ * main - Entry point
+ *
+ * Description: Prints all possible combinations of three different digits,
+ *        in ascending order, separated by a comma followed by a space
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
+{
+	int pu[7] = {95,112,117,116,99,97,114};
+	int i;
+
+	for (i=0; i<7;i++)
+	{
+		_putchar(pu[i]);
+	}
+	_putchar(10);
+
+	return (0);
+}
