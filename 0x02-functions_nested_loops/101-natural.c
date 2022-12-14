@@ -10,17 +10,26 @@
 
 int main(void)
 {
-	int tmp, i, m = 1024;
+	int sum, tmp3, tmp5, i, m = 1024;
+
+	sum = 0;
+	tmp3 = 0;
+	tmp5 = 0;
 
 	for (i = 0; i < m; i++)
 	{
-		if (i % 3 == 0 || i % 5 == 0)
+		if (i % 3 == 0)
 		{
-			tmp += i;
+			tmp3 += i;
+		}
+		else if (i % 5 == 0)
+		{
+			tmp5 += i;
 		}
 	}
 
-	printf("%d\n", tmp);
+	sum = tmp3 + tmp5;
+	printf("%d\n", sum);
 
 	return (0);
 }
