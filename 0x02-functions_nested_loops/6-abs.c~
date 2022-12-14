@@ -1,0 +1,25 @@
+#include "main.h"
+
+/**
+ * _abs - Entry point
+ *
+ * @n: int
+ * Description: Prints all possible combinations of three different digits,
+ *        in ascending order, separated by a comma followed by a space
+ * Return: Always 0 (Success)
+ */
+
+int _abs(int n)
+{
+	int tmp;
+
+	if (n < 0)
+	{
+		tmp = n * -1;
+		return (tmp);
+	}
+	else
+	{
+		return (n);
+	}
+}
