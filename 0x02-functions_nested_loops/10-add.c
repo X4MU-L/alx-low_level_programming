@@ -1,0 +1,19 @@
+#include "main.h"
+
+/**
+ * add - Entry point
+ *
+ * @n: Params int
+ * @y: Params int
+ * Description: Adds two ints and return the value
+ * Return: int value of adding n and y
+ */
+
+int add(int n, int y)
+{
+	int tmp;
+
+	tmp = n + y;
+
+	return (tmp);
+}
