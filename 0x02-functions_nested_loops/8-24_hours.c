@@ -1,0 +1,35 @@
+#include "main.h"
+
+/**
+ * jack_bauer - Entry point
+ *
+ * Description: Prints all possible combinations of three different digits,
+ *        in ascending order, separated by a comma followed by a space
+ * Return: Always 0 (Success)
+ */
+
+void jack_bauer(void)
+{
+	int i, j, k, l;
+
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 10; j++)
+		{
+			if (i >= 2 && j >= 4)
+				continue;
+			for (k = 0; k < 6; k++)
+			{
+				for (l = 0; l < 10; l++)
+				{
+					_putchar(i % 10 + '0');
+					_putchar(j % 10 + '0');
+					_putchar(':');
+					_putchar(k % 10 + '0');
+					_putchar(l % 10 + '0');
+					_putchar(10);
+				}
+			}
+		}
+	}
+}
