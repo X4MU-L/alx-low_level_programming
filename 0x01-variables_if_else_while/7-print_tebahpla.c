@@ -6,7 +6,7 @@
 /**
  * main - Entry point
  *
- * Description: prints all lowercase and uppercase letters
+ * Description: prints all lowercase letters in reverse
  * Return: Always 0 (Success)
  */
 int main(void)
