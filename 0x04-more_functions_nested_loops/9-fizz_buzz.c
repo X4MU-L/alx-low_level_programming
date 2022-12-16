@@ -25,7 +25,14 @@ int main(void)
 		}
 		else if (i % 5 == 0)
 		{
-			printf("%s ", buzz);
+			if (i == 100)
+			{
+				printf("%s", buzz);
+			}
+			else
+			{
+				printf("%s ", buzz);
+			}
 		}
 		else if (i % 3 == 0)
 		{
