@@ -51,4 +51,14 @@ void print_number(int n)
 		_putchar(((tmp / 10) % 10) + '0');
 		_putchar(tmp % 10 + '0');
 	}
+	else if (tmp >= 10000 && tmp < 100000)
+	{
+		if (n < 0)
+			_putchar('-');
+		_putchar((tmp / 10000) + '0');
+		_putchar(((tmp / 1000) % 10) + '0');
+		_putchar(((tmp / 100) % 10) + '0');
+		_putchar(((tmp / 10) % 10) + '0');
+		_putchar(tmp % 10 + '0');
+	}
 }
