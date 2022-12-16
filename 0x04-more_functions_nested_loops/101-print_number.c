@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * print_number - Entry point
@@ -10,55 +11,19 @@
 
 void print_number(int n)
 {
-	int tmp;
+	unsigned int num = n;
 
+	/*first check if its negative*/
 	if (n < 0)
 	{
-		tmp = n * -1;
-	}
-	else
-	{
-		tmp = n;
+		_putchar('-');
+		num = -num;
 	}
 
-	if (tmp >= 0 && tmp < 10)
-	{
-		if (n < 0)
-			_putchar('-');
-		_putchar(tmp % 10 + '0');
-	}
-	else if (tmp >= 10 && tmp < 100)
-	{
-		if (n < 0)
-			_putchar('-');
-		_putchar((tmp / 10) + '0');
-		_putchar(tmp % 10 + '0');
-	}
-	else if (tmp >= 100 && tmp < 1000)
-	{
-		if (n < 0)
-			_putchar('-');
-		_putchar((tmp / 100) + '0');
-		_putchar(((tmp / 10) % 10) + '0');
-		_putchar(tmp % 10 + '0');
-	}
-	else if (tmp >= 1000 && tmp < 10000)
-	{
-		if (n < 0)
-			_putchar('-');
-		_putchar((tmp / 1000) + '0');
-		_putchar(((tmp / 100) % 10) + '0');
-		_putchar(((tmp / 10) % 10) + '0');
-		_putchar(tmp % 10 + '0');
-	}
-	else if (tmp >= 10000 && tmp < 100000)
-	{
-		if (n < 0)
-			_putchar('-');
-		_putchar((tmp / 10000) + '0');
-		_putchar(((tmp / 1000) % 10) + '0');
-		_putchar(((tmp / 100) % 10) + '0');
-		_putchar(((tmp / 10) % 10) + '0');
-		_putchar(tmp % 10 + '0');
-	}
+	/*reculsively print the first few digits*/
+	if ((num / 10) > 0)
+		print_number(num / 10);
+
+	/*print the last digit*/
+	_putchar((num % 10) + 48);
 }
