@@ -17,15 +17,21 @@ void puts2(char *str)
 
 	while (*(str + i) != '\0')
 	{
-		if (*(str + i) % 2 != 0)
-		{
-			i++;
-			continue;
-		}
-		else
+
+		if (i == 0)
 		{
 			_putchar(*(str + i));
 			i++;
+		}
+		else if (i % 2 == 0)
+		{
+			_putchar(*(str + i));
+			i++;
+		}
+		else
+		{
+			i++;
+			continue;
 		}
 	}
 
