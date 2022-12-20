@@ -1,22 +1,23 @@
 #include "main.h"
 
 /**
- * _strlen - Entry point
+ * puts_half - Entry pointx
  *
- * @s: pointer to a char
- * Description: Gets the length of the string passed in as s
+ * @str: pointer to a char
+ * Description: Prints half of an even string
  *
- * Return: Return the length of the string
+ * Return: Return (void)
  */
 
 void puts_half(char *str)
 {
-	int _strlen(char *s);
+	int _strlen(char *);
 	int i, len = _strlen(str);
 
 	if (len % 2 != 0)
 	{
-		_putchar(*(str + ((len - 1) / 2)));
+		for (i = 0; i < (len - 1) / 2; i++)
+			_putchar(*(str + i));
 	}
 	else
 	{
@@ -27,25 +28,13 @@ void puts_half(char *str)
 	_putchar(10);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * _strlen - Entry point
+ *
+ * @s: pointer to a char
+ *
+ * Return: Return the length of the string
+ */
 
 int _strlen(char *s)
 {
