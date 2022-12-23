@@ -11,18 +11,30 @@
 
 char *cap_string(char *str)
 {
-	int i, sp, ch, cap;
+	int index = 0;
 
-	while (str[i])
+	while (str[index])
 	{
-		sp = str[i] == '\n' || str[i] == '\t' || str[i] == ' ' || str[i] == 123 || str[i] == 125;
-		ch = str[i] == 34 || str[i] == 33 || str[i] == 63 || str[i] == 59 || (str[i] >= 40 && str[i] <= 46);
-		cap = str[i + 1] >= 97 && str[i + 1] <= 122;
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
 
-		if ((ch || sp) && cap)
-			str[i + 1] -= 32;
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
 
-		i++;
+		index++;
 	}
 
 	return (str);
