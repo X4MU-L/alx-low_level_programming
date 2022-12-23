@@ -1,12 +1,12 @@
 #include "main.h"
-#include <stdio.h>
+
 /**
- * _strlen - Entry point
+ * string_toupper - Entry point
  *
- * @s: pointer to a char
- * Description: Gets the length of the string passed in as s
+ * @a: pointer to a char
+ * Description: Change a to upper case
  *
- * Return: Return the length of the string
+ * Return: Return pointer to a
  */
 
 char *string_toupper(char *a)
@@ -15,7 +15,7 @@ char *string_toupper(char *a)
 
 	while (a[i])
 	{
-	        if (a[i] >= 97 && a[i] <= 122)
+		if (a[i] >= 97 && a[i] <= 122)
 		{
 			a[i] -= 32;
 		}
