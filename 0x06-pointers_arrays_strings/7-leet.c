@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- * _strlen - Entry point
+ * leet - Entry point
  *
  * @s: pointer to a char
- * Description: Gets the length of the string passed in as s
+ * Description: Encodes letters in LEET - 1337
  *
- * Return: Return the length of the string
+ * Return: Returns encoded chars
  */
 
 char *leet(char *s)
 {
 	int i = 0, j;
-	char leet[8] = {'O','L','?','E','A','?','?','T'};
+	char leet[8] = {'O', 'L', '?', 'E', 'A', '?', '?', 'T'};
 
 	while (s[i])
 	{
