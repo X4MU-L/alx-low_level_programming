@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _puts_recursion - Prints a string of characters recursively and a new line
+ * factorial - Get the factorial of a number a given number
  *
- * @s: pointer to a string of char
+ * @n: int to get it's factorial
  *
- * Return: Returns void
+ * Return: Returns the factorial of n or -1 if less than 0
  */
 
 int factorial(int n)
