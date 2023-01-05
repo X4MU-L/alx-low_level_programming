@@ -10,15 +10,13 @@
 
 int is_palindrome(char *s)
 {
-	void _strlen(int *len, char *s);
+	void _strlen(char *s);
 	int check_palindrome(char *s, char *z);
-	int *ptr_len, len = 0;
-
-	ptr_len = &len;
+	int len = 0;
 
 	if (!(*s))
 		return (1);
-	_strlen(ptr_len, s);
+	len = _strlen(s);
 	return (check_palindrome(s + (len - 1), s));
 }
 
@@ -26,18 +24,21 @@ int is_palindrome(char *s)
  * _strlen - gets the length of a string
  *
  * @s: string to check
- * @len: pointer to an int to update len
  *
- * Return: Returns void
+ * Return: Returns length of string
  */
 
-void _strlen(int *len, char *s)
+int _strlen(char *s)
 {
-	while (*s)
+	int len = 0;
+
+	if (*s)
 	{
-		(*len)++;
-		s++;
+		len++;
+		len += _strlen(s + len);
 	}
+
+	return (len);
 
 }
 
