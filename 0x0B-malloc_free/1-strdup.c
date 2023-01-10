@@ -12,9 +12,10 @@
 
 char *_strdup(char *str)
 {
-	char *ptr_chr;
 	int _strlen_recursion(char *s);
+
 	int len, i;
+	char *ptr_chr;
 
 	if (str == NULL)
 		return (NULL);
