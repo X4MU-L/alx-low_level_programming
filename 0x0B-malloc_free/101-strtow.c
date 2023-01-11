@@ -1,129 +1,106 @@
+#include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
+
+int word_len(char *str);
+int count_words(char *str);
+char **strtow(char *str);
 
 /**
- * strtow - returns a pointer to a newly allocated space in memory, which\
- * contains a multidimentional array of str
+ * word_len - Locates the index marking the end of the
+ *            first word contained within a string.
+ * @str: The string to be searched.
  *
- * @str: pointer to a string of char
- *
- * Return: Returns a pointer to the array of arrays
+ * Return: The index marking the end of the initial word pointed to by str.
  */
+int word_len(char *str)
+{
+	int index = 0, len = 0;
 
+	while (*(str + index) && *(str + index) != ' ')
+	{
+		len++;
+		index++;
+	}
+
+	return (len);
+}
+
+/**
+ * count_words - Counts the number of words contained within a string.
+ * @str: The string to be searched.
+ *
+ * Return: The number of words contained within str.
+ */
+int count_words(char *str)
+{
+	int index = 0, words = 0, len = 0;
+
+	for (index = 0; *(str + index); index++)
+		len++;
+
+	for (index = 0; index < len; index++)
+	{
+		if (*(str + index) != ' ')
+		{
+			words++;
+			index += word_len(str + index);
+		}
+	}
+
+	return (words);
+}
+
+/**
+ * strtow - Splits a string into words.
+ * @str: The string to be split.
+ *
+ * Return: If str = NULL, str = "", or the function fails - NULL.
+ *         Otherwise - a pointer to an array of strings (words).
+ */
 char **strtow(char *str)
 {
-	int word_count(char *str);
-	void copy_str2uneven_array(char **arr_aray, char *str, int height);
+	char **strings;
+	int index = 0, words, w, letters, l;
 
-	char **ptr_chr;
-	int i, j, height = 0, width;
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
 
-	if (str == NULL || *str == '\0')
+	words = count_words(str);
+	printf("height = %d\n", words);
+	if (words == 0)
 		return (NULL);
-	height = word_count(str);
-	if (height == 0)
+
+	strings = malloc(sizeof(char *) * (words + 1));
+	if (strings == NULL)
 		return (NULL);
-	ptr_chr = malloc(sizeof(char *) * height + 1);
-	if (ptr_chr == NULL)
-		return (NULL);
-	for (i = 0; str[i]; i++)
+
+	for (w = 0; w < words; w++)
 	{
-		if (str[i] == 32)
-			continue;
-		width = 0;
-		for (; str[i] != 32; i++)
-			width++;
-		for (j = 0; j < height; j++)
+		while (str[index] == ' ')
+			index++;
+
+		letters = word_len(str + index);
+
+		printf("letters = %d\n", letters);
+
+		strings[w] = malloc(sizeof(char) * (letters + 1));
+
+		if (strings[w] == NULL)
 		{
-			ptr_chr[j] = malloc(sizeof(char) * width + 1);
-			if (ptr_chr[j] == NULL)
-			{
-				for (; j >= 0; j--)
-					free(ptr_chr[j]);
-				free(ptr_chr);
-				return (NULL);
-			}
-		}
-	}
-	ptr_chr[j] = NULL;
-	copy_str2uneven_array(ptr_chr, str, height);
+			for (; w >= 0; w--)
+				free(strings[w]);
 
-	return (ptr_chr);
-}
-
-/**
- * letter_count - Get the count of how many letters are in a word
- *
- * @str: pointer to a string
- *
- * Return: Returns the word count
- */
-
-int letter_count(char *str)
-{
-	int i, count = 0;
-
-	while (str[i] != 32)
-	{
-		i++;
-		count++;
-	}
-
-	return (count);
-}
-
-/**
- * word_count - Get the count of how many words are in a string seperated\
- * by spaces
- *
- * @str: pointer to a string
- *
- * Return: Returns the word count
- */
-
-int word_count(char *str)
-{
-	int i, count = 0;
-
-	for (i = 0; str[i]; i++)
-	{
-		if (str[i] == 32)
-			continue;
-		for (; str[i] != 32; i++)
-			continue;
-		count++;
-	}
-
-	return (count);
-}
-
-/**
- * copy_str2uneven_array - copies from str delimited by spaces to array\
- * of arrays
- *
- * @str: pointer to a string to copy from
- * @arr_aray: array of arrays
- * @height: length of array
- *
- * Return: Returns void
- */
-
-void copy_str2uneven_array(char **arr_aray, char *str, int height)
-{
-	int width, i, j = 0;
-
-	for (i = 0; str[i]; i++)
-	{
-		if (str[i] == 32)
-			continue;
-
-		width = 0;
-
-		for (; str[i] != 32 && j < height; i++)
-		{
-			arr_aray[j][width++] = str[i];
+			free(strings);
+			return (NULL);
 		}
 
-		arr_aray[j][width++] = '\0';
-		j++;
+		for (l = 0; l < letters; l++)
+			strings[w][l] = str[index++];
+
+		strings[w][l] = '\0';
 	}
+	strings[w] = NULL;
+
+	return (strings);
 }
