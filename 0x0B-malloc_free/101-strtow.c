@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stddef.h>
 
 /**
  * strtow - returns a pointer to a newly allocated space in memory, which\
