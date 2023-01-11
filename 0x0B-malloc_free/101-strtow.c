@@ -33,10 +33,9 @@ char **strtow(char *str)
 		width = 0;
 		for (; str[i] != 32; i++)
 			width++;
-		width++;
 		for (j = 0; j < height; j++)
 		{
-			ptr_chr[j] = malloc(sizeof(char) * width);
+			ptr_chr[j] = malloc(sizeof(char) * width + 1);
 			if (ptr_chr[j] == NULL)
 			{
 				for (; j >= 0; j--)
