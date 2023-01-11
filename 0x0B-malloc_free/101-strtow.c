@@ -23,7 +23,7 @@ char **strtow(char *str)
 	height = word_count(str);
 	if (height == 0)
 		return (NULL);
-	ptr_chr = malloc(sizeof(char) * height + 1);
+	ptr_chr = malloc(sizeof(char *) * height + 1);
 	if (ptr_chr == NULL)
 		return (NULL);
 	for (i = 0; str[i]; i++)
@@ -49,6 +49,27 @@ char **strtow(char *str)
 	copy_str2uneven_array(ptr_chr, str, height);
 
 	return (ptr_chr);
+}
+
+/**
+ * letter_count - Get the count of how many letters are in a word
+ *
+ * @str: pointer to a string
+ *
+ * Return: Returns the word count
+ */
+
+int letter_count(char *str)
+{
+	int i, count = 0;
+
+	while (str[i] != 32)
+	{
+		i++;
+		count++;
+	}
+
+	return (count);
 }
 
 /**
