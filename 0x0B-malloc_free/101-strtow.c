@@ -23,7 +23,7 @@ char **strtow(char *str)
 	height = word_count(str);
 	if (height == 0)
 		return (NULL);
-	ptr_chr = malloc(sizeof(char *) * height);
+	ptr_chr = malloc(sizeof(char *) * height + 1);
 	if (ptr_chr == NULL)
 		return (NULL);
 	for (i = 0; str[i]; i++)
