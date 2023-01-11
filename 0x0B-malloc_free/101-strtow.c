@@ -20,10 +20,10 @@ char **strtow(char *str)
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-
 	height = word_count(str);
+	if (height == 0)
+		return (NULL);
 	ptr_chr = malloc(sizeof(char *) * height);
-
 	if (ptr_chr == NULL)
 		return (NULL);
 	for (i = 0; str[i]; i++)
@@ -47,7 +47,6 @@ char **strtow(char *str)
 		}
 	}
 	ptr_chr[j] = NULL;
-
 	copy_str2uneven_array(ptr_chr, str, height);
 
 	return (ptr_chr);
