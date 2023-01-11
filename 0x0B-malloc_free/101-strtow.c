@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int word_len(char *str);
 int count_words(char *str);
@@ -67,7 +66,6 @@ char **strtow(char *str)
 		return (NULL);
 
 	words = count_words(str);
-	printf("height = %d\n", words);
 	if (words == 0)
 		return (NULL);
 
@@ -81,8 +79,6 @@ char **strtow(char *str)
 			index++;
 
 		letters = word_len(str + index);
-
-		printf("letters = %d\n", letters);
 
 		strings[w] = malloc(sizeof(char) * (letters + 1));
 
