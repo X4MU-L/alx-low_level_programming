@@ -1,13 +1,12 @@
 #include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
 
 /**
- * str_concat - returns a pointer to a newly allocated space in memory, which\
+ * string_nconcat - returns a pointer to a newly allocated space in memory,\
  * contains a the concat of two string parameter
  *
  * @s1: pointer to a string of char
  * @s2: pointer to a string of char
+ * @n: bytes of s2 to copy
  *
  * Return: Returns a pointer to the concatenated string
  */
