@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 /**
- * create_array - creates array an initize from min to max both included
+ * array_range - creates array an initize from min to max both included
  *
  * @min: minimum number in array
  * @max: maximum number in array
@@ -18,7 +18,7 @@ int *array_range(int min, int max)
 		return (NULL);
 	size = (max - min) + 1;
 
-	ptr_int = malloc(sizeof *ptr_int * size);
+	ptr_int = malloc(sizeof(*ptr_int) * size);
 
 	if (ptr_int == NULL)
 		return (NULL);
