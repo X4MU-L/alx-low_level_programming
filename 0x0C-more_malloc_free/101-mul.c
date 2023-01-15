@@ -108,7 +108,7 @@ void get_product(char *buffer, char *to_mult, int digit, int zero)
 	}
 
 	if (tens)
-		*buffer = tens + '0';
+		*buffer = (tens % 10) + '0';
 }
 
 /**
