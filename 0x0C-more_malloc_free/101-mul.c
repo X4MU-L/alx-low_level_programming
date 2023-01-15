@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 		add_nums(final_buffer, prod_buffer, size - 1);
 	}
 
-	for (index = 0; index < (size + 1); index++)
+	for (index = 0; final_buffer[index]; index++)
 	{
 		if (final_buffer[index] != 'x')
 			_putchar(final_buffer[index]);
@@ -155,7 +155,7 @@ void add_nums(char *final_buffer, char *prod_buffer, int buffer_len)
 	}
 
 	if (tens)
-		*final_buffer = tens + '0';
+		*final_buffer = (tens % 10) + '0';
 }
 
 /**
