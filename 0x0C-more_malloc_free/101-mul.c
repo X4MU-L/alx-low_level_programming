@@ -199,7 +199,7 @@ char *create_xarray(int size)
 		exit(98);
 	}
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (size - 1); i++)
 		array[i] = 'x';
 	array[i] = '\0';
 
