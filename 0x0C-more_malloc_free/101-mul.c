@@ -31,14 +31,12 @@ int main(int argc, char **argv)
 
 	if (argv[1][0] == '0')
 		argv[1] = check_zero(argv[1]);
-
 	if (argv[2][0] == '0')
 		argv[2] = check_zero(argv[2]);
 
 	size = get_len(argv[1]) + get_len(argv[2]);
 	prod_buffer = create_xarray(size + 1);
 	final_buffer = create_xarray(size + 1);
-
 	for (index = get_len(argv[2]) - 1; index >= 0; index--)
 	{
 		digit = _isdigit(*(argv[2] + index));
@@ -52,6 +50,8 @@ int main(int argc, char **argv)
 			_putchar(final_buffer[index]);
 	}
 	_putchar(10);
+	free(prod_buffer);
+	free(final_buffer);
 	return (0);
 }
 
