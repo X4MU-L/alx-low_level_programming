@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int get_len(char *s);
+int _isdigit(char c);
+char *create_xarray(int size);
+char *check_zero(char *s);
+void get_product(char *buffer, char *to_mult, int digit, int zero);
+void add_nums(char *final_buffer, char *prod_buffer, int buffer_len);
+
+
 /**
  * main - multiply two number passed in as argument in the command line
  *
@@ -13,17 +21,10 @@
 
 int main(int argc, char **argv)
 {
-	int get_len(char *s);
-	int _isdigit(char c);
-	char *create_xarray(int size);
-	char *check_zero(char *s);
-	void get_product(char *buffer, char *to_mult, int digit, int zero);
-	void add_nums(char *final_buffer, char *prod_buffer, int buffer_len);
-
 	int size, index, digit, zero = 0;
 	char *final_buffer, *prod_buffer;
 
-	if (argc < 3)
+	if (argc != 3)
 	{
 		printf("Error\n");
 		exit(98);
@@ -33,6 +34,11 @@ int main(int argc, char **argv)
 		argv[1] = check_zero(argv[1]);
 	if (argv[2][0] == '0')
 		argv[2] = check_zero(argv[2]);
+	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
+	{
+		printf("0\n");
+		return (0);
+	}
 
 	size = get_len(argv[1]) + get_len(argv[2]);
 	prod_buffer = create_xarray(size + 1);
@@ -69,8 +75,6 @@ int main(int argc, char **argv)
 
 void get_product(char *buffer, char *to_mult, int digit, int zero)
 {
-	int get_len(char *s);
-
 	int mult_len = get_len(to_mult) - 1;
 	int nums, tens = 0;
 
