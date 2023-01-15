@@ -30,9 +30,9 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 
-	if (argv[1][0] == '0')
+	if (*(argv[1]) == '0')
 		argv[1] = check_zero(argv[1]);
-	if (argv[2][0] == '0')
+	if (*(argv[2]) == '0')
 		argv[2] = check_zero(argv[2]);
 	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
 	{
@@ -53,9 +53,9 @@ int main(int argc, char **argv)
 	for (index = 0; final_buffer[index]; index++)
 	{
 		if (final_buffer[index] != 'x')
-			_putchar(final_buffer[index]);
+			putchar(final_buffer[index]);
 	}
-	_putchar(10);
+	putchar(10);
 	free(prod_buffer);
 	free(final_buffer);
 	return (0);
