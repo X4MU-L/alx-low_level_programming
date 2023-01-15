@@ -7,6 +7,9 @@ int main(void)
   int *p;
 
   a[2] = 1024;
+  a[0] = 21;
+  a[1] = 41;
+  a[3] = 51;
   p = &n;
   /*
    * write your line of code here...
@@ -16,8 +19,8 @@ int main(void)
    * - only one statement
    * - you are not allowed to code anything else than this line of code
    */
-  *(p + 5) = 98;
+  *(p + 3) = 98;
   /* ...so that this prints 98\n */
-  printf("a[2] = %d\n", a[2]);
+  printf("a[2] = %d\n", a[0]);
   return (0);
 }
