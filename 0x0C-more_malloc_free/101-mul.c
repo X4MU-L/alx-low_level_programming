@@ -196,7 +196,6 @@ char *create_xarray(int size)
 
 	if (array == NULL)
 	{
-		printf("Error\n");
 		exit(98);
 	}
 
