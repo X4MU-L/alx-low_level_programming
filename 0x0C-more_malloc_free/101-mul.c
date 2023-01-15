@@ -52,7 +52,6 @@ int main(int argc, char **argv)
 			_putchar(final_buffer[index]);
 	}
 	_putchar(10);
-
 	return (0);
 }
 
@@ -156,7 +155,7 @@ void add_nums(char *final_buffer, char *prod_buffer, int buffer_len)
 }
 
 /**
- * isdigit - Checks if a char is a digit
+ * _isdigit - Checks if a char is a digit
  *
  * @c: char to check
  *
