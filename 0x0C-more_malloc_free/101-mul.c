@@ -216,8 +216,8 @@ char *create_xarray(int size)
 
 char *check_zero(char *s)
 {
-	if (*s && *s == '0')
-		return (check_zero(s + 1));
+	while (*s && *s == '0')
+	       s++;
 
 	return (s);
 }
