@@ -1,4 +1,5 @@
 #include "function_pointers.h"
+#include <stddef.h>
 
 /**
  * print_name - Takes in a function pointer and passes name to it's call
@@ -9,5 +10,7 @@
 
 void print_name(char *name, void (*f)(char *))
 {
+	if (name == NULL)
+		return;
 	f(name);
 }
