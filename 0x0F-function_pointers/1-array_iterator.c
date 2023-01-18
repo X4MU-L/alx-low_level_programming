@@ -3,8 +3,9 @@
 /**
  * array_iterator - Takes in a function and iterate an array and call function\
  * on each int
- * @action: function pointer to a function that takes in an int and returns void
+ * @action: pointer to a function that takes in an int and returns void
  * @array: pointer to an array of ints
+ * @size: size of array
  * Return: Returns void
  */
 
