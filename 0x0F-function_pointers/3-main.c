@@ -8,7 +8,7 @@
  * Return: returns 0 on success otherwise exit with an exit code
  */
 
-int main(int argc, char **argv)
+int main(int __attribute__((__unused__)) argc, char **argv)
 {
 	int (*ptr_fnc)(int, int);
 	char *op;
