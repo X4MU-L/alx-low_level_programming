@@ -1,9 +1,8 @@
 #include "lists.h"
 
 /**
- * add_node_end - adds a node to the end of a linked list
- * @head: pointer to a pointer to struct of list_t
- * @str: string
+ * free_list - frees the memory used by a linked list
+ * @head: pointer to struct of list_t
  * Return: return a pointer to the added node
  */
 
