@@ -8,7 +8,7 @@
 size_t free_listint_safe(listint_t **head)
 {
 	listint_t *temp;
-	size_t len;
+	size_t len = 0;
 	long int diff;
 
 	if (!head || !*head)
