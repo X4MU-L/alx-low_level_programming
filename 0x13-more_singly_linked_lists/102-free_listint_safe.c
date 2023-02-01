@@ -24,7 +24,10 @@ size_t free_listint_safe(listint_t **head)
 		if (diff > 0)
 			*head = temp;
 		else
+		{
+			*head = NULL;
 			break;
+		}
 	}
 
 	*head = NULL;
