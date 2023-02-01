@@ -11,6 +11,9 @@ size_t free_listint_safe(listint_t **head)
 	size_t len;
 	long int diff;
 
+	if (!head || !*head)
+		return (0);
+
 	while (*head)
 	{
 		diff = *head - (*head)->next;
