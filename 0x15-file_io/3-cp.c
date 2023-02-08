@@ -10,44 +10,77 @@
 
 int main(int argc, char **argv)
 {
-	int n, op, op1, wr, BUFSIZE = 1024;
-	char *buffer[1024];
+	int from, to, rd, wr;
+	char *buffer;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	op = open(argv[1], O_RDWR);
-	if (op == -1)
+
+	buffer = create_buffer(argv[2]);
+	from = open(argv[1], O_RDONLY);
+	rd = read(from, buffer, BUFSIZE);
+	if (from == -1 || rd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 			argv[1]);
 		exit(98);
 	}
-	printf("op = %d", op);
+	to = open(argv[2], O_CREAT | O_EXCL | O_WRONLY | O_APPEND, 0664);
+	if (to == -1 && errno == EEXIST)
+		to = open(argv[2], O_WRONLY | O_TRUNC | O_APPEND);
 
-	while ((n = read(op, buffer, BUFSIZE)) > 0)
+	while ((wr = write(to, buffer, rd)) > 0)
+		rd = read(from, buffer, BUFSIZE);
+	if (to == -1 || wr == -1)
 	{
-		op1 = open(argv[2], O_RDWR | O_APPEND);
-		if (op1 != -1)
-		{
-			wr = write(op1, buffer, n);
-			if (wr == -1)
-			{
-				dprintf(STDERR_FILENO,
-					"Error: Can't write to %s\n", argv[2]);
-				close(op1);
-				exit(99);
-			}
-			close(op1);
-		}
-		else
-		{
-			op1 = open(argv[2], O_RDWR | O_CREAT | O_APPEND, 0664);
-			write(op1, buffer, n);
-			close(op1);
-		}
+		free(buffer);
+		close_FD(from);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
-	return (1);
+	free(buffer);
+	close_FD(from);
+	close_FD(to);
+	return (0);
+}
+
+/**
+ * create_buffer - creates a buffer of size 1024 bits and return address
+ * @filename: a string of a filename
+ * Return: returns the first index of the address created
+ */
+
+char *create_buffer(char *filename)
+{
+	char *buffer = malloc(sizeof(char) * BUFSIZE);
+
+	if (buffer == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		exit(99);
+	}
+
+	return (buffer);
+}
+
+/**
+ * close_FD - closes a file discriptor or print to the stderr on failure
+ * @fd: file descriptor
+ * Return: void
+ */
+
+void close_FD(int fd)
+{
+	int n;
+
+	n = close(fd);
+
+	if (n == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 }
