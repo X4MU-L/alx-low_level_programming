@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 			free(buffer);
 		exit(98);
 	}
-	to = open(argv[2], O_CREAT | O_EXCL | O_WRONLY | O_APPEND, 0664);
+	to = open(argv[2], O_CREAT | O_EXCL | O_WRONLY, 0664);
 	if (to == -1 && errno == EEXIST)
 		to = open(argv[2], O_WRONLY | O_TRUNC | O_APPEND);
 
