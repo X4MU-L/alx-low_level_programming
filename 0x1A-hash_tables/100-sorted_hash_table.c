@@ -200,16 +200,16 @@ void sorted_insert_snode(shash_table_t *ht, shash_node_t *node)
 		return;
 	}
 	temp = ht->shead;
-	if (*(node->key) < *(temp->key))
+	if (is_lesser_ASCII(node->key, temp->key))
 	{
 		node->snext = temp;
 		temp->sprev = node;
 		ht->shead = node;
 		return;
 	}
-	while (temp->snext &&  (*(temp->snext->key) < *(node->key)))
+	while (temp->snext && is_lesser_ASCII(temp->snext->key, node->key))
 		temp = temp->snext;
-	if (!temp->snext && (*(node->key) > *(temp->key)))
+	if (!temp->snext && is_lesser_ASCII(temp->key, node->key))
 	{
 		temp->snext = node;
 		node->sprev = temp;
@@ -269,4 +269,24 @@ shash_node_t *create_node(const char *key, const char *value)
 	node->next = NULL;
 
 	return (node);
+}
+
+/**
+ * is_lesser_ASCII - checks through the ascii values of two strings
+ * check if the value of the first string is less than the second
+ * @key1: the first string whose value is checked to be less than the second
+ * @key2: the second string whose value should be greater than the @key1
+ * Return: return 1 if @key1 char is less than @key2 else 0
+ */
+
+int is_lesser_ASCII(const char *key1, const char *key2)
+{
+	unsigned long int i = 0;
+
+	while (key1[i] && key2[i] && key1[i] == key2[i])
+		i++;
+	if (key1[i] < key2[i])
+		return (1);
+
+	return (0);
 }

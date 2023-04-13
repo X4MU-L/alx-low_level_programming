@@ -93,5 +93,6 @@ void shash_table_delete(shash_table_t *ht);
 void free_snode(shash_node_t *node);
 shash_node_t *create_node(const char *key, const char *value);
 void sorted_insert_snode(shash_table_t *ht, shash_node_t *node);
+int is_lesser_ASCII(const char *key1, const char *key2);
 
 #endif /*HASH_TABLE_H*/
