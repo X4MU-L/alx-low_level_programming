@@ -1,0 +1,7 @@
+# make all .c files using a variable
+
+CC = gcc
+SRC = school.c main.c
+
+all: $(SRC)
+	$(CC) $(SRC) -o school
