@@ -39,7 +39,7 @@ int binary_search(int *array, size_t size, int value)
 	int end = size - 1;
 	int mid;
 
-	if (!array)
+	if (!array || !*array)
 		return (-1);
 
 	while (start < end)
