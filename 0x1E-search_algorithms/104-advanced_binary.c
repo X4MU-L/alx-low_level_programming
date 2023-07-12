@@ -54,7 +54,7 @@ int recursive_binary_search(int *array, int start, int end, int value)
 	else if (array[mid] > value)
 		/* search from the begining of array */
 		return (recursive_binary_search(array, start, mid - 1, value));
-	else if (array[mid] == value && start == 0)
+	else if (array[mid] == value && mid > start)
 		/* check for possible first value in array */
 		return (recursive_binary_search(array, start, mid, value));
 	else
