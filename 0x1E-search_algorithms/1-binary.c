@@ -13,7 +13,7 @@ int print_search_info(int *array, int start, int end)
 	int i, flag = 0;
 
 	printf("Searching in array: ");
-	for (i = start; i < end; i++)
+	for (i = start; i <= end; i++)
 	{
 		if (!flag)
 			printf("%d", array[i]);
