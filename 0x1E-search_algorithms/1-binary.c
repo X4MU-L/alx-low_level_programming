@@ -42,16 +42,16 @@ int binary_search(int *array, size_t size, int value)
 	if (!array || (!*array && *array != 0))
 		return (-1);
 
-	while (start < end)
+	while (start <= end)
 	{
 		mid = (start + end) / 2;
 		print_search_info(array, start, end + 1);
-		if (array[mid] < value)
-			start = mid + 1;
-		else if (array[mid] > value)
+		if (array[mid] == value)
+			return (array[mid]);
+		else if(array[mid] > value)
 			end = mid - 1;
 		else
-			return (array[mid]);
+			start = mid + 1;		
 	}
 
 	return (-1);
