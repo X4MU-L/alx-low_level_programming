@@ -48,10 +48,10 @@ int binary_search(int *array, size_t size, int value)
 		print_search_info(array, start, end + 1);
 		if (array[mid] == value)
 			return (array[mid]);
-		else if(array[mid] > value)
+		else if (array[mid] > value)
 			end = mid - 1;
 		else
-			start = mid + 1;		
+			start = mid + 1;
 	}
 
 	return (-1);
