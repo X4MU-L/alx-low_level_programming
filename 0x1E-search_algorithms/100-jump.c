@@ -38,7 +38,7 @@ int jump_search(int *array, size_t size, int value)
 		i = m;
 		/* increment block */
 		m += temp_m;
-	} while (array[i] <= value);
+	} while (array[i] < value);
 	/* loop from start of block and check for value*/
 	for (; i <= m && i < size; i++)
 	{
