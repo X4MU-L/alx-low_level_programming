@@ -23,11 +23,11 @@ int interpolation_search(int *array, size_t size, int value)
 	if (!array || size <= 0)
 		return (-1);
 
-	while (mid < size || lo < hi)
+	while (lo <= hi)
 	{
 		mid = lo + ((hi - lo) * (value - array[lo])) /
 					(array[hi] - array[lo]);
-		if (mid > size)
+		if (mid >= size)
 		{
 			printf("Value checked array[%ld] is out of range\n",
 			       mid);
