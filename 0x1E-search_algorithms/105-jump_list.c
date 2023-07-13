@@ -39,7 +39,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		 * if node->n is greater than value, bound found, use temp
 		 * to get value
 		 */
-		if (!head->next || (head && head->n > value))
+		if (!head->next || (head && head->n >= value))
 		{
 			printf("Value found between indexes [%ld] and [%ld]\n",
 			       i, bound >= size ? size - 1 : bound);
