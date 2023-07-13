@@ -27,7 +27,7 @@ int jump_search(int *array, size_t size, int value)
 		 * check if block is greater
 		 * than value or next index > size
 		 */
-		if (m > size || array[m] >= value)
+		if (m >= size || array[m] >= value)
 		{
 			printf("Value found between indexes [%ld] and [%ld]\n",
 			       i, m);
@@ -38,7 +38,7 @@ int jump_search(int *array, size_t size, int value)
 		i = m;
 		/* increment block */
 		m += temp_m;
-	} while (array[i] < value);
+	} while (array[i] <= value);
 	/* loop from start of block and check for value*/
 	for (; i <= m && i < size; i++)
 	{
