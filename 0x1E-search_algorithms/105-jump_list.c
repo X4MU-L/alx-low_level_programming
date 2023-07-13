@@ -28,22 +28,22 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	{
 		/* save a temp position of list */
 		temp = head;
-		/* get the node at index of bound if any else NULL*/
+		/* get the node at index of bound if any else return last node*/
 		head = get_jump_index(head, bound);
-		/* if node exist print message */
-		if (head)
-			printf("Value checked at index [%ld] = [%d]\n", bound,
-			       head->n);
+		/* print message index with bound if less than size - 1 */
+		printf("Value checked at index [%ld] = [%d]\n",
+		       bound >= size ? size - 1 : bound, head->n);
 		/*
-		 * if node does not exits, end of list - print area and rest
+		 * if node->next is NULL, end of list - print area and rest
 		 * of the list
 		 * if node->n is greater than value, bound found, use temp
 		 * to get value
 		 */
-		if (!head || (head && head->n >= value))
+		if (!head->next || (head && head->n > value))
 		{
 			printf("Value found between indexes [%ld] and [%ld]\n",
 			       i, bound >= size ? size - 1 : bound);
+			/* return node if value is found else NULL */
 			return (get_jump_value(temp, i, size, value));
 		}
 		/* save bound previous position */
@@ -63,8 +63,9 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
  */
 listint_t *get_jump_index(listint_t *list, size_t bound)
 {
-	if (!list)
-		return (NULL);
+	/* if node is last node return node */
+	if (!list->next)
+		return (list);
 	if (list->index == bound)
 		return (list);
 	return (get_jump_index(list->next, bound));
