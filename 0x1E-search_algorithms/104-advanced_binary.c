@@ -6,14 +6,15 @@
  * @array: - the array to print
  * @start: - the start of the array to print
  * @end: - the end of the array to print
+ * @size:  - the size of the array
  * Return: - returns 1 or 0
  */
-int print_search_info(int *array, int start, int end)
+int print_search_info(int *array, int start, int end, int size)
 {
 	int i, flag = 0;
 
 	printf("Searching in array: ");
-	for (i = start; i < end; i++)
+	for (i = start; i < end && i < size; i++)
 	{
 		if (!flag)
 			printf("%d", array[i]);
@@ -37,26 +38,28 @@ int print_search_info(int *array, int start, int end)
  * @value: - the value to search for
  * @start: - the start of the array to print
  * @end: - the end of the array to print
+ * @size:  - the size of the array
  * Return: - index of value if found else -1
  */
-int recursive_binary_search(int *array, int start, int end, int value)
+int recursive_binary_search(int *array, int start, int end,
+							int value, int size)
 {
 	int mid = ((start + end) / 2);
 
-	if (start > end)
+	if (start >= end)
 		return (-1);
 
-	print_search_info(array, start, end + 1);
+	print_search_info(array, start, end + 1, size);
 
 	if (array[mid] < value)
 		/* search from the middle of array */
-		return (recursive_binary_search(array, mid + 1, end, value));
+		return (recursive_binary_search(array, mid + 1, end, value, size));
 	else if (array[mid] > value)
 		/* search from the begining of array */
-		return (recursive_binary_search(array, start, mid - 1, value));
+		return (recursive_binary_search(array, start, mid - 1, value, size));
 	else if (array[mid] == value && mid > start)
 		/* check for possible first value in array */
-		return (recursive_binary_search(array, start, mid, value));
+		return (recursive_binary_search(array, start, mid, value, size));
 	else
 		return (mid);
 }
@@ -78,5 +81,5 @@ int advanced_binary(int *array, size_t size, int value)
 	if (!array || size == 0)
 		return (-1);
 
-	return (recursive_binary_search(array, 0, (int) size - 1, value));
+	return (recursive_binary_search(array, 0, (int) size, value, (int) size));
 }
