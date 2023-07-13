@@ -47,7 +47,7 @@ int binary_search_interpolation(int *array, size_t start,
 		mid = (start + end) / 2;
 		print_search_info(array, start, end + 1);
 		if (array[mid] == value)
-			return (array[mid]);
+			return (mid);
 		else if (array[mid] > value)
 			end = mid - 1;
 		else
