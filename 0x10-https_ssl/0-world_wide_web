@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# dig a given domain with SERVERS and print records
+
+SERVERS=( "www" "lb-01" "web-01" "web-02" )
+
+if [[ -z $2 && ! -z  $1 ]];
+then
+	for sub in "${SERVERS[@]}"
+	do
+		HILL=$(dig $sub.$1 | \
+		grep -A1 ";; ANSWER SECTION:" | \
+		tail -1)
+		echo "$sub $HILL" | \
+		awk '{print "The subdomain "$1" is a "$5" record and points to "$6}'
+	done
+elif [[ ! -z $1 && ! -z $2 ]];
+then
+	HILL=$(dig $2.$1 | \
+	grep -A1 ";; ANSWER SECTION:" | \
+	tail -1)
+	echo "$2 $HILL" | \
+	awk '{print "The subdomain "$1" is a "$5" record and points to "$6}'
+else
+	echo "Usage: ${:2} DOMAIN_NAME [SUB_DOMAIN]"
+	exit 1;
+fi
